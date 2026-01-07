@@ -180,28 +180,30 @@ const Quiz = () => {
         {/* Question Card */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Image Section */}
-          <div className={`relative h-80 bg-gradient-to-br ${currentQ.imageColor} flex items-center justify-center overflow-hidden`}>
-            {currentQ.image ? (
-              <img 
-                src={currentQ.image}
-                alt={currentQ.name}
-                className={`w-full h-full object-cover ${answered ? 'blur-0' : 'blur-3xl'} transition-all duration-700`}
-              />
-            ) : (
-              <div className={`w-64 h-64 rounded-full ${answered ? 'blur-0' : 'blur-2xl'} bg-white/20 backdrop-blur-sm transition-all duration-700 flex items-center justify-center`}>
-                <div className="text-white text-8xl">👤</div>
-              </div>
-            )}
-            {answered && (
-              <div className="absolute bottom-4 left-0 right-0 text-center">
-                <div className="bg-black/50 backdrop-blur-sm inline-block px-6 py-3 rounded-full">
-                  <p className="text-white font-bold text-xl">{currentQ.name}</p>
-                  <p className="text-white/80 text-sm">{currentQ.city} Milletvekili</p>
-                  <p className="text-white/90 text-xs mt-1">{currentQ.correctAnswer} → {currentQ.newParty}</p>
-                </div>
-              </div>
-            )}
-          </div>
+<div className={`relative h-80 bg-gradient-to-br ${currentQ.imageColor} flex items-center justify-center overflow-hidden`}>
+  {currentQ.image ? (
+    <img 
+      src={currentQ.image}
+      alt={currentQ.name}
+      /* Sınıfları w-64 h-64 ve rounded-full yaparak çerçeveyi eşitledik */
+      className={`w-64 h-64 rounded-full object-cover shadow-2xl border-4 border-white/30 ${answered ? 'blur-0' : 'blur-3xl'} transition-all duration-700`}
+    />
+  ) : (
+    <div className={`w-64 h-64 rounded-full ${answered ? 'blur-0' : 'blur-2xl'} bg-white/20 backdrop-blur-sm transition-all duration-700 flex items-center justify-center`}>
+      <div className="text-white text-8xl">👤</div>
+    </div>
+  )}
+  {/* Cevap verildiğinde çıkan isim bandı kısmı aşağıda aynı kalabilir */}
+  {answered && (
+    <div className="absolute bottom-4 left-0 right-0 text-center">
+      <div className="bg-black/50 backdrop-blur-sm inline-block px-6 py-3 rounded-full">
+        <p className="text-white font-bold text-xl">{currentQ.name}</p>
+        <p className="text-white/80 text-sm">{currentQ.city} Milletvekili</p>
+        <p className="text-white/90 text-xs mt-1">{currentQ.correctAnswer} → {currentQ.newParty}</p>
+      </div>
+    </div>
+  )}
+</div>
 
           {/* Quote Section */}
           <div className="p-8 bg-gradient-to-br from-gray-50 to-white">
